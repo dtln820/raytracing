@@ -24,13 +24,13 @@ typedef struct	s_vec
 
 typedef struct	s_ray
 {
-	t_vec		orig; // origin
-	t_vec		dir; // direction
+	t_vec		*orig; // origin
+	t_vec		*dir; // direction
 }				t_ray;
 
 typedef struct	s_sphere
 {
-	t_vec		center; // center
+	t_vec		*center; // center
 	double		radius; // radius 
 }				t_sphere;
 
@@ -44,9 +44,9 @@ t_ray			*ray_init(t_vec *orig, t_vec *dir);
 
 t_sphere		*sphere_init(t_vec *center, double radius);
 
-int				sph_intersect(t_ray *ray, double *t);
+int				sph_intersect(t_ray *ray, double *t, t_sphere *sphere);
 
-t_vec			vec_diff(t_vec a, t_vec b);
+t_vec			vec_diff(t_vec a, t_vec *b);
 
 double			vec_dot(t_vec a, t_vec b);
 

@@ -1,6 +1,6 @@
 #include "rt.h"
 
-int		sph_intersect(t_ray *ray, double *t)
+int		sph_intersect(t_ray *ray, double *t, t_sphere *sphere)
 {
 	t_vec	orig;
 	t_vec	dir;
@@ -9,15 +9,15 @@ int		sph_intersect(t_ray *ray, double *t)
 	double	c;
 	double	disc;
 
-	orig.x = ray->orig.x;
-	orig.y = ray->orig.y;
-	orig.z = ray->orig.z;
-	dir.x = ray->dir.x;
-	dir.y = ray->dir.y;
-	dir.z = ray->dir.z;
-	oc = vec_diff(orig, center); // center of sphere
+	orig.x = ray->orig->x;
+	orig.y = ray->orig->y;
+	orig.z = ray->orig->z;
+	dir.x = ray->dir->x;
+	dir.y = ray->dir->y;
+	dir.z = ray->dir->z;
+	oc = vec_diff(orig, sphere->center); // center of sphere
 	b = 2 * vec_dot(oc, dir);
-	c = vec_dot(oc, oc) - radius * radius; // radius of sphere
+	c = vec_dot(oc, oc) - sphere->radius * sphere->radius; // radius of sphere
 	disc = b * b - 4 * c;
 	if (disc < 0)
 		return (0);

@@ -1,12 +1,12 @@
 #include "rt.h"
 
-t_vec       vec_diff(t_vec a, t_vec b)
+t_vec       vec_diff(t_vec a, t_vec *b)
 {
     t_vec   result;
 
-    result.x = a.x - b.x;
-    result.y = a.y - b.y;
-    result.z = a.z - b.z;
+    result.x = a.x - b->x;
+    result.y = a.y - b->y;
+    result.z = a.z - b->z;
 
     return (result);
 }
