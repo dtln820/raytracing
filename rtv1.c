@@ -1,36 +1,5 @@
 #include "rtv1.h"
 
-void	ft_vecinit(double a, double b, double c, t_vec *vector)
-{
-	vector->x = a;
-	vector->y = b;
-	vector->z = c;
-}
-
-void	ft_rayinit(t_vec *orig, t_vec *dir, t_ray *ray)
-{
-	ray->origin = orig;
-	ray->direction = dir;
-}
-
-void	ft_sphereinit(t_vec *center, double radius, t_sphere *sphere)
-{
-	sphere->center = center;
-	sphere->radius = radius;
-}
-
-void	ft_vecdiff(t_vec *a, t_vec *b, t_vec *result)
-{
-	result->x = a->x - b->x;
-	result->y = a->y - b->y;
-	result->z = a->z - b->z;
-}
-
-double	ft_vecdot(t_vec *a, t_vec *b)
-{
-	return (a->x * b->x + a->y * b->y + a->z * b->z);
-}
-
 int		intersection(t_ray *ray, double *t, t_sphere *sphere)
 {
 	t_vec	*temp_o;
