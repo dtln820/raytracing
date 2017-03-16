@@ -33,8 +33,6 @@ double	ft_vecdot(t_vec *a, t_vec *b)
 
 int		intersection(t_ray *ray, double *t, t_sphere *sphere)
 {
-	// Maybe temp1 & temp2 not necessary to use, could try to use directly
-	// ray vectors
 	t_vec	*temp_o;
 	t_vec	*temp_d;
 	t_vec	*temp_oc;
@@ -77,7 +75,7 @@ void	ft_render(t_wnd *ws)
 	t_vec		*center = (t_vec*)malloc(sizeof(t_vec));
 
 	ft_vecinit(ws->width / 2, ws->height / 2, 50, center);
-	ft_sphereinit(center, 20, sphere);
+	ft_sphereinit(center, 50, sphere);
 	t = 20000;
 	ray = (t_ray*)malloc(sizeof(t_ray));
 	y = 0;
@@ -86,10 +84,11 @@ void	ft_render(t_wnd *ws)
 		x = 0;
 		while (x < ws->width)
 		{
-			// send ray
+			// init vectors and trace ray
 			ft_vecinit(x, y, 0, orig);
 			ft_vecinit(0, 0, 1, dir);
 			ft_rayinit(orig, dir, ray);
+
 			// check intersection
 			if (intersection(ray, &t, sphere) == 1)
 			{
