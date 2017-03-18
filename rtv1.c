@@ -5,27 +5,26 @@ int		intersection(t_ray *ray, double *t, t_sphere *sphere)
 	t_vec	*temp_o;
 	t_vec	*temp_d;
 	t_vec	*temp_oc;
+	double var[5];
 
-	temp_o = (t_vec*)malloc(sizeof(t_vec));
-	temp_d = (t_vec*)malloc(sizeof(t_vec));
 	temp_oc = (t_vec*)malloc(sizeof(t_vec));
-	ft_vecinit(ray->origin->x, ray->origin->y, ray->origin->z, temp_o);
-	ft_vecinit(ray->direction->x, ray->direction->y, ray->direction->z, temp_d);
+	temp_o = ft_vecinit(ray->origin->x, ray->origin->y, ray->origin->z);
+	temp_d = ft_vecinit(ray->direction->x, ray->direction->y, ray->direction->z);
 	ft_vecdiff(temp_o, sphere->center, temp_oc);
-	double b = 2 * ft_vecdot(temp_oc, temp_d);
-	double c = ft_vecdot(temp_oc, temp_oc) - sphere->radius * sphere->radius;
-	double disc = b * b - 4 * c;
+	var[0] = 2 * ft_vecdot(temp_oc, temp_d);
+	var[1] = ft_vecdot(temp_oc, temp_oc) - sphere->radius * sphere->radius;
+	var[2] = var[0] * var[0] - 4 * var[1];
 	free(temp_o);
 	free(temp_d);
 	free(temp_oc);
-	if (disc < 0)
+	if (var[2] < 0)
 		return (0);
 	else
 	{
-		disc = sqrt(disc);
-		double t0 = -b - disc;
-		double t1 = -b + disc;
-		*t = (t0 < t1) ? t0 : t1;
+		var[2] = sqrt(var[2]);
+		var[3] = -var[0] - var[2];
+		var[4] = -var[0] + var[2];
+		*t = (var[3] < var[4]) ? var[3] : var[4];
 		return (1);
 	}
 }
@@ -36,18 +35,10 @@ void	ft_render(t_wnd *ws)
 	int			y;
 	int			x;
 	t_ray		*ray;
-	t_vec		*orig;
-	t_vec		*dir;
 	t_sphere	*sphere;
-	t_vec		*center;
 
-	orig = (t_vec*)malloc(sizeof(t_vec));
-	dir = (t_vec*)malloc(sizeof(t_vec));
-	sphere = (t_sphere*)malloc(sizeof(t_vec));
-	center = (t_vec*)malloc(sizeof(t_vec));
-	ft_vecinit(ws->width / 2, ws->height / 2, 50, center);
-	ft_sphereinit(center, 50, sphere);
-	ray = (t_ray*)malloc(sizeof(t_ray));
+	sphere = ft_sphereinit(ws->width / 2, ws->height / 2, 50, 50);
+	ray = ft_rayinit();
 	t = 20000;
 	y = 0;
 	while (y < ws->height)
@@ -55,9 +46,8 @@ void	ft_render(t_wnd *ws)
 		x = 0;
 		while (x < ws->width)
 		{
-			ft_vecinit(x, y, 0, orig);
-			ft_vecinit(0, 0, 1, dir);
-			ft_rayinit(orig, dir, ray);
+			ft_vecset(x, y, 0, ray->origin);
+			ft_vecset(0, 0, 1, ray->direction);
 			if (intersection(ray, &t, sphere) == 1)
 			{
 				mlx_pixel_put(ws->mlx, ws->win, x, y, 0xFFFFFF);
@@ -66,10 +56,10 @@ void	ft_render(t_wnd *ws)
 		}
 		y++;
 	}
-	free(orig);
-	free(dir);
+	free(ray->origin);
+	free(ray->direction);
 	free(ray);
-	free(center);
+	free(sphere->center);
 	free(sphere);
 }
 

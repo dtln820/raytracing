@@ -1,20 +1,32 @@
 #include "rtv1.h"
 
-void	ft_vecinit(double a, double b, double c, t_vec *vector)
+t_vec		*ft_vecinit(double a, double b, double c)
 {
+	t_vec	*vector;
+	
+	vector = (t_vec*)malloc(sizeof(t_vec));
 	vector->x = a;
 	vector->y = b;
 	vector->z = c;
+	return (vector);
 }
 
-void	ft_rayinit(t_vec *orig, t_vec *dir, t_ray *ray)
+t_ray		*ft_rayinit()
 {
-	ray->origin = orig;
-	ray->direction = dir;
+	t_ray	*result;
+
+	result = (t_ray*)malloc(sizeof(t_ray));
+	result->origin = ft_vecinit(0, 0, 0);
+	result->direction = ft_vecinit(0, 0, 0);
+	return (result);
 }
 
-void	ft_sphereinit(t_vec *center, double radius, t_sphere *sphere)
+t_sphere	*ft_sphereinit(double a, double b, double c, double r)
 {
-	sphere->center = center;
-	sphere->radius = radius;
+	t_sphere	*result;
+
+	result = (t_sphere*)malloc(sizeof(t_sphere));
+	result->center = ft_vecinit(a, b, c);
+	result->radius = r;
+	return (result);
 }
