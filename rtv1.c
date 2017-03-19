@@ -71,9 +71,9 @@ void	ft_render(t_wnd *ws)
 				free(N);
 				free(temp1);
 				free(temp2);
-				int tv1 = (int)(0x0000FF * fabs(dt)) << 16;
-				int tv2 = (int)(0x0000FF * fabs(dt)) << 8;
-				int tv3 = (int)(0x0000FF * fabs(dt));
+				int tv1 = (int)(0x0000FF * fabs(dt) + 0xFF0000) << 16;
+				int tv2 = (int)(0x0000FF * fabs(dt) + 0xFF0000) << 8;
+				int tv3 = (int)(0x0000FF * fabs(dt) + 0xFF0000);
 				mlx_pixel_put(ws->mlx, ws->win, x, y, tv1 | tv2 | tv3);
 			}
 			x++;
