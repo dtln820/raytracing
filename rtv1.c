@@ -36,8 +36,10 @@ void	ft_render(t_wnd *ws)
 	int			x;
 	t_ray		*ray;
 	t_sphere	*sphere;
+	t_sphere	*light;
 
 	sphere = ft_sphereinit(ws->width / 2, ws->height / 2, 50, 50);
+	light = ft_sphereinit(ws->width / 2, 0, 50, 1);
 	ray = ft_rayinit();
 	t = 20000;
 	y = 0;
@@ -50,7 +52,29 @@ void	ft_render(t_wnd *ws)
 			ft_vecset(0, 0, 1, ray->direction);
 			if (intersection(ray, &t, sphere) == 1)
 			{
-				mlx_pixel_put(ws->mlx, ws->win, x, y, 0xFFFFFF);
+				t_vec *temp = ft_vecinit(0, 0, 0);
+				t_vec *temp1 = ft_vecinit(0, 0, 0);
+				t_vec *temp2 = ft_vecinit(0, 0, 0);
+				t_vec *poi = ft_vecinit(0, 0, 0);
+				ft_vecmbn(ray->direction, t, temp);
+				ft_vecsum(ray->origin, temp, poi);
+				t_vec *L = ft_vecinit(0, 0, 0);
+				ft_vecdiff(light->center, poi, L);
+				t_vec *N = ft_vecinit(0, 0, 0);
+				ft_sphnormal(poi, sphere, N);
+				ft_vecnormalize(L, temp1);
+				ft_vecnormalize(N, temp2);
+				double dt = ft_vecdot(temp1, temp2);
+				free(temp);
+				free(poi);
+				free(L);
+				free(N);
+				free(temp1);
+				free(temp2);
+				int tv1 = (int)(0x0000FF * fabs(dt)) << 16;
+				int tv2 = (int)(0x0000FF * fabs(dt)) << 8;
+				int tv3 = (int)(0x0000FF * fabs(dt));
+				mlx_pixel_put(ws->mlx, ws->win, x, y, tv1 | tv2 | tv3);
 			}
 			x++;
 		}
@@ -61,6 +85,8 @@ void	ft_render(t_wnd *ws)
 	free(ray);
 	free(sphere->center);
 	free(sphere);
+	free(light->center);
+	free(light);
 }
 
 int		main(int argc, char *argv[])

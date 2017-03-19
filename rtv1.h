@@ -40,5 +40,10 @@ t_sphere		*ft_sphereinit(double a, double b, double c, double r);
 void			ft_vecdiff(t_vec *a, t_vec *b, t_vec *result);
 double			ft_vecdot(t_vec *a, t_vec *b);
 void			ft_vecset(double a, double b, double c, t_vec *vector);
+void			ft_vecmbn(t_vec *vector, double a, t_vec *result);
+void			ft_vecsum(t_vec *a, t_vec *b, t_vec *result);
+void			ft_sphnormal(t_vec *poi, t_sphere *sphere, t_vec *result);
+void			ft_vecdivbn(t_vec *a, double b, t_vec *result);
+void			ft_vecnormalize(t_vec *a, t_vec *result);
 
 #endif
