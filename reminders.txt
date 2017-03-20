@@ -1,6 +1,0 @@
-In SPHERE INTESERCTION:
-var[0] = b;
-var[1] = c;
-var[2] = disc;
-var[3] = t0;
-var[4] = t1;

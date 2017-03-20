@@ -1,2 +1,0 @@
-gcc rtv1.c init_structures.c vec_ops.c vec_ops2.c -lmlx -lXext -lX11 -lm
-echo "Compiled!"
