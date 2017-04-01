@@ -1,0 +1,25 @@
+#Centered Camera
+Camera
+first_camera
+X:0.0
+Y:0.0
+Z:0.0
+#END
+
+#Sphere to be rendered
+Sphere
+sphere
+X:250.0
+Y:250.0
+Z:50.0
+RADIUS:50.0
+#END
+
+#Light
+Sphere
+light
+X:250.0
+Y:100.0
+Z:50.0
+RADIUS:1.0
+#END

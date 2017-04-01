@@ -39,7 +39,7 @@ void	ft_render(t_wnd *ws)
 	t_sphere	*light;
 
 	sphere = ft_sphereinit(ws->width / 2, ws->height / 2, 50, 50);
-	light = ft_sphereinit(ws->width / 2, 0, 50, 1);
+	light = ft_sphereinit(ws->width / 2, 100, 50, 1);
 	ray = ft_rayinit();
 	t = 20000;
 	y = 0;
@@ -71,9 +71,9 @@ void	ft_render(t_wnd *ws)
 				free(N);
 				free(temp1);
 				free(temp2);
-				int tv1 = (int)(0x0000FF * fabs(dt) + 0xFF0000) << 16;
-				int tv2 = (int)(0x0000FF * fabs(dt) + 0xFF0000) << 8;
-				int tv3 = (int)(0x0000FF * fabs(dt) + 0xFF0000);
+				int tv1 = (int)(0x0000FF * fabs(dt) + 0xFFFFFF) << 16;
+				int tv2 = (int)(0x0000FF * fabs(dt) + 0xFFFFFF) << 8;
+				int tv3 = (int)(0x0000FF * fabs(dt) + 0xFFFFFF);
 				mlx_pixel_put(ws->mlx, ws->win, x, y, tv1 | tv2 | tv3);
 			}
 			x++;
