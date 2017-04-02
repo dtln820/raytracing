@@ -1,25 +1,34 @@
 #Centered Camera
 Camera
 first_camera
-X:0.0
-Y:0.0
-Z:0.0
+0.0     #P_X
+0.0     #P_Y
+0.0     #P_Z
+0.0     #R_X
+0.0     #R_Y
+0.0     #R_Z
 #END
 
 #Sphere to be rendered
 Sphere
 sphere
-X:250.0
-Y:250.0
-Z:50.0
-RADIUS:50.0
+250.0   #P_X
+250.0   #P_Y
+50.0    #P_Z
+0.0     #R_X
+0.0     #R_Y
+0.0     #R_Z
+50.0    #RADIUS
 #END
 
 #Light
 Sphere
 light
-X:250.0
-Y:100.0
-Z:50.0
-RADIUS:1.0
+250.0   #P_X
+100.0   #P_Y
+50.0    #P_Z
+0.0     #R_X
+0.0     #R_Y
+0.0     #R_Z
+1.0     #RADIUS
 #END

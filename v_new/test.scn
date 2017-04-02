@@ -1,0 +1,10 @@
+#Centered Camera
+Camera
+first_camera
+15.0     #P_X
+2.0     #P_Y
+-17.0     #P_Z
+36.0     #R_X
+15.0     #R_Y
+10.0     #R_Z
+#END

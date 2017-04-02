@@ -1,0 +1,7 @@
+## World view
+[Camera properties affecting objects]
+    All objects position: obj.position - camera.position
+
+## TODO
+[Objects]
+    {?} Free objects structures (I'll use them while rendering, then could free them just 4 fun)
