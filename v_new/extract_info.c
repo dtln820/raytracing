@@ -6,6 +6,15 @@ int					light_nr;
 t_camnode			*cam_head;
 t_sphnode			*sph_head;
 
+void	ft_fillplaneprop(int *enters, t_plane *plane, char *str)
+{
+	if (*enters == 2)
+	{
+		plane->name = (char*)malloc(sizeof(char) * strlen(str));
+		strcpy(plane->name, str);
+	}
+}
+
 void	ft_fillstructs(char *str)
 {
 	static int		objtofill[3];

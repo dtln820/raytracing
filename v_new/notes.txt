@@ -5,3 +5,8 @@
 ## TODO
 [Objects]
     {?} Free objects structures (I'll use them while rendering, then could free them just 4 fun)
+	{#} Determine properties that are must have to draw planes, cylinders, cones
+
+## Info
+[Planes]
+    http://mathinsight.org/forming_planes

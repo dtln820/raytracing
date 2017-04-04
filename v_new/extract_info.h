@@ -8,6 +8,12 @@
 # include <string.h>
 # include "get_next_line.h"
 
+typedef struct			s_plane
+{
+	char				*name;
+	
+}						t_plane;
+
 typedef struct			s_camera
 {
 	char				*name;
