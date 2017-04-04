@@ -8,3 +8,15 @@ first_camera
 15.0     #R_Y
 10.0     #R_Z
 #END
+
+#Sphere to be rendered
+Sphere
+sphere
+250.0   #P_X
+250.0   #P_Y
+50.0    #P_Z
+0.0     #R_X
+0.0     #R_Y
+0.0     #R_Z
+50.0    #RADIUS
+#END
