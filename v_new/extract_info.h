@@ -11,7 +11,6 @@
 typedef struct			s_plane
 {
 	char				*name;
-	
 }						t_plane;
 
 typedef struct			s_camera
