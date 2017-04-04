@@ -12,7 +12,7 @@ void	ft_fillplaneprop(int *enters, t_plane *plane, char *str)
 	{
 		plane->name = (char*)malloc(sizeof(char) * strlen(str));
 		strcpy(plane->name, str);
-	}
+	} 
 }
 
 void	ft_fillstructs(char *str)
