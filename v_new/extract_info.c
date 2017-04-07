@@ -12,7 +12,28 @@ void	ft_fillplaneprop(int *enters, t_plane *plane, char *str)
 	{
 		plane->name = (char*)malloc(sizeof(char) * strlen(str));
 		strcpy(plane->name, str);
-	} 
+	}
+	else if (*enters == 3)
+		plane->point_x = strtod(str, NULL);
+	else if (*enters == 4)
+		plane->point_y = strtod(str, NULL);
+	else if (*enters == 5)
+		plane->point_z = strtod(str, NULL);
+	else if (*enters == 6)
+		plane->normal_vec->x = strtod(str, NULL);
+	else if (*enters == 7)
+		plane->normal_vec->y = strtod(str, NULL);
+	else if (*enters == 8)
+		plane->normal_vec->z = strtod(str, NULL);
+	else if (*enters == 9)
+		plane->r_x = strtod(str, NULL);
+	else if (*enters == 10)
+		plane->r_y = strtod(str, NULL);
+	else if (*enters == 11)
+	{
+		plane->r_z = strtod(str, NULL);
+		*enters = 0;
+	}
 }
 
 void	ft_fillstructs(char *str)

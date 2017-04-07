@@ -68,6 +68,12 @@ typedef struct			s_lightnode
 	struct s_lightnode	*next;
 }						t_lightnode;
 
+typedef struct			s_planenode
+{
+	struct s_plane		*plane;
+	struct s_planenode	*next;
+}						t_planenode;
+
 int		ft_extract(int fd, char *path);
 void	ft_fillstructs(char *str);
 void	ft_fillcamprop(int *enters, t_camera *cam, char *str);
@@ -78,5 +84,6 @@ void	ft_fillsphprop(int *enters, t_sphere *sphere, char *str);
 void	ft_sphcreatefirst();
 void	ft_sphcreatenode();
 void	ft_fillsphere(char *str);
+void	ft_fillplaneprop(int *enters, t_plane *plane, char *str);
 
 #endif
