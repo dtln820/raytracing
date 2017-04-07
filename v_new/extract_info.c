@@ -7,7 +7,7 @@ int					plane_nr;
 t_camnode			*cam_head;
 t_sphnode			*sph_head;
 t_planenode			*plane_head;
-t_planenode			*plane_sent;
+static t_planenode	*plane_sent;
 
 void	ft_fillplaneprop(int *enters, t_plane *plane, char *str)
 {

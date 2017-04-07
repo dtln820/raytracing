@@ -85,5 +85,8 @@ void	ft_sphcreatefirst();
 void	ft_sphcreatenode();
 void	ft_fillsphere(char *str);
 void	ft_fillplaneprop(int *enters, t_plane *plane, char *str);
+void	ft_planecreatefirst();
+void	ft_planecreatenode();
+void	ft_fillplane(char *str);
 
 #endif
