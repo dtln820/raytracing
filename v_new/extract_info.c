@@ -49,6 +49,33 @@ void	ft_planecreatefirst()
 	plane_nr++;
 }
 
+void	ft_planecreatenode()
+{
+	plane_sent = plane_head;
+	while (plane_sent->next != NULL)
+		plane_sent = plane_sent->next;
+	plane_sent->next = (t_planenode*)malloc(sizeof(t_planenode));
+	plane_sent->next->plane = (t_plane*)malloc(sizeof(t_plane));
+	plane_sent->next->plane->normal_vec = (t_vector*)malloc(sizeof(t_vector));
+	plane_sent->next->next = NULL;
+	plane_sent = plane_sent->next;
+	plane_nr++;
+}
+
+void	ft_fillplane(char *str)
+{
+	static int	enters;
+
+	enters++;
+	if (enters == 1 && plane_nr > 0)
+		ft_planecreatenode();
+	else if (enters > 1)
+		ft_fillplaneprop(&enters, plane_sent->plane, str);
+	if (plane_nr == 0 && enters == 1)
+		ft_planecreatefirst();
+
+}
+
 void	ft_fillstructs(char *str)
 {
 	static int		objtofill[3];
