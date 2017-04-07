@@ -3,8 +3,11 @@
 int					cam_nr;
 int					sphere_nr;
 int					light_nr;
+int					plane_nr;
 t_camnode			*cam_head;
 t_sphnode			*sph_head;
+t_planenode			*plane_head;
+t_planenode			*plane_sent;
 
 void	ft_fillplaneprop(int *enters, t_plane *plane, char *str)
 {
@@ -34,6 +37,16 @@ void	ft_fillplaneprop(int *enters, t_plane *plane, char *str)
 		plane->r_z = strtod(str, NULL);
 		*enters = 0;
 	}
+}
+
+void	ft_planecreatefirst()
+{
+	plane_head = (t_planenode*)malloc(sizeof(t_planenode));
+	plane_head->plane = (t_plane*)malloc(sizeof(t_plane));
+	plane_head->plane->normal_vec = (t_vector*)malloc(sizeof(t_vector));
+	plane_head->next = NULL;
+	plane_sent = plane_head;
+	plane_nr++;
 }
 
 void	ft_fillstructs(char *str)
