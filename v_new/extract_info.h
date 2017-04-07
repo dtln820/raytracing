@@ -8,9 +8,23 @@
 # include <string.h>
 # include "get_next_line.h"
 
+typedef struct			s_vector
+{
+	double				x;
+	double				y;
+	double				z;
+}						t_vector;
+
 typedef struct			s_plane
 {
 	char				*name;
+	double				point_x;
+	double				point_y;
+	double				point_z;
+	struct s_vector		*normal_vec;
+	double				r_x;
+	double				r_y;
+	double				r_z;
 }						t_plane;
 
 typedef struct			s_camera
@@ -47,6 +61,12 @@ typedef struct			s_sphnode
 	struct s_sphere		*sphere;
 	struct s_sphnode	*next;
 }						t_sphnode;
+
+typedef struct			s_lightnode
+{
+	struct s_sphere		*light;
+	struct s_lightnode	*next;
+}						t_lightnode;
 
 int		ft_extract(int fd, char *path);
 void	ft_fillstructs(char *str);
