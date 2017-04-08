@@ -1,0 +1,16 @@
+http://www.cs.unc.edu/~rademach/xroads-RT/RTarticle.html
+http://www.cs.utah.edu/~shirley/books/fcg2/rt.pdf
+http://www.siggraph.org/education/materials/HyperGraph/raytrace/rtrace0.htm
+http://www.cl.cam.ac.uk/teaching/1999/AGraphHCI/SMAG/node2.html#SECTION00023200000000000000
+http://www.purplealienplanet.com/node/20
+https://www.youtube.com/watch?v=9RkCkGm-5FA
+https://www.youtube.com/watch?v=DVZJDw6wqeM
+https://www.scratchapixel.com/code.php?id=3&origin=/lessons/3d-basic-rendering/introduction-to-ray-tracing
+https://www.youtube.com/watch?v=k_aRiYSXcyo
+https://www.ics.uci.edu/~gopi/CS211B/RayTracing%20tutorial.pdf
+http://uhef.github.io/mytracer/
+http://fuzzyphoton.tripod.com/howtowrt.htm
+http://www.raytracegroundup.com/
+Ray Tracing in one weekend #BOOK
+https://www.libsdl.org/ #SDL
+http://www.parallelrealities.co.uk/2011/09/basic-game-tutorial-4-controlling.html #SDL TUTS
