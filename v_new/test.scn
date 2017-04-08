@@ -20,3 +20,17 @@ sphere
 0.0     #R_Z
 50.0    #RADIUS
 #END
+
+#Plane
+Plane
+simple_plane
+0.0     #P_X
+30.0    #P_Y
+0.0     #P_Z
+0.0     #Normal_X
+20.0    #Normal_Y
+10.0    #Normal_Z
+0.0     #R_X
+0.0     #R_Y
+0.0     #R_Z
+#END

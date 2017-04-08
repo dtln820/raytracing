@@ -7,78 +7,10 @@ int					plane_nr;
 t_camnode			*cam_head;
 t_sphnode			*sph_head;
 t_planenode			*plane_head;
-static t_planenode	*plane_sent;
-
-void	ft_fillplaneprop(int *enters, t_plane *plane, char *str)
-{
-	if (*enters == 2)
-	{
-		plane->name = (char*)malloc(sizeof(char) * strlen(str));
-		strcpy(plane->name, str);
-	}
-	else if (*enters == 3)
-		plane->point_x = strtod(str, NULL);
-	else if (*enters == 4)
-		plane->point_y = strtod(str, NULL);
-	else if (*enters == 5)
-		plane->point_z = strtod(str, NULL);
-	else if (*enters == 6)
-		plane->normal_vec->x = strtod(str, NULL);
-	else if (*enters == 7)
-		plane->normal_vec->y = strtod(str, NULL);
-	else if (*enters == 8)
-		plane->normal_vec->z = strtod(str, NULL);
-	else if (*enters == 9)
-		plane->r_x = strtod(str, NULL);
-	else if (*enters == 10)
-		plane->r_y = strtod(str, NULL);
-	else if (*enters == 11)
-	{
-		plane->r_z = strtod(str, NULL);
-		*enters = 0;
-	}
-}
-
-void	ft_planecreatefirst()
-{
-	plane_head = (t_planenode*)malloc(sizeof(t_planenode));
-	plane_head->plane = (t_plane*)malloc(sizeof(t_plane));
-	plane_head->plane->normal_vec = (t_vector*)malloc(sizeof(t_vector));
-	plane_head->next = NULL;
-	plane_sent = plane_head;
-	plane_nr++;
-}
-
-void	ft_planecreatenode()
-{
-	plane_sent = plane_head;
-	while (plane_sent->next != NULL)
-		plane_sent = plane_sent->next;
-	plane_sent->next = (t_planenode*)malloc(sizeof(t_planenode));
-	plane_sent->next->plane = (t_plane*)malloc(sizeof(t_plane));
-	plane_sent->next->plane->normal_vec = (t_vector*)malloc(sizeof(t_vector));
-	plane_sent->next->next = NULL;
-	plane_sent = plane_sent->next;
-	plane_nr++;
-}
-
-void	ft_fillplane(char *str)
-{
-	static int	enters;
-
-	enters++;
-	if (enters == 1 && plane_nr > 0)
-		ft_planecreatenode();
-	else if (enters > 1)
-		ft_fillplaneprop(&enters, plane_sent->plane, str);
-	if (plane_nr == 0 && enters == 1)
-		ft_planecreatefirst();
-
-}
 
 void	ft_fillstructs(char *str)
 {
-	static int		objtofill[3];
+	static int		objtofill[6];
 	/*
 	0 - Camera
 	1 - Sphere
@@ -108,16 +40,16 @@ void	ft_fillstructs(char *str)
 		}
 		ft_fillsphere(str);
 	}
-	// else if (strcmp(str, "Light") == 0 || objtofill[2] == 1)
-	// {
-	// 	objtofill[2] = 1;
-	// 	if (strcmp(str, "#END") == 0)
-	// 	{
-	// 		objtofill[2] = 1;
-	// 		return ;
-	// 	}
-	// 	ft_filllight(str);
-	// }
+	else if (strcmp(str, "Plane") == 0 || objtofill[2] == 1)
+	{
+		objtofill[2] = 1;
+		if (strcmp(str, "#END") == 0)
+		{
+			objtofill[2] = 1;
+			return ;
+		}
+		ft_fillplane(str);
+	}
 }
 
 int		ft_extract(int fd, char *path)
@@ -162,5 +94,17 @@ int		main(int argc, char *argv[])
 	printf("Rotation Y: %f\n", sph_sent->sphere->r_y);
 	printf("Rotation Z: %f\n", sph_sent->sphere->r_z);
 	printf("\nRadius: %f\n", sph_sent->sphere->radius);
+
+	t_planenode *plane_sent = plane_head;
+	printf("\nObject name: %s\n", plane_sent->plane->name);
+	printf("\nPosition X: %f\n", plane_sent->plane->point_x);
+	printf("Position Y: %f\n", plane_sent->plane->point_y);
+	printf("Position Z: %f\n", plane_sent->plane->point_z);
+	printf("\nNormal vector X: %f\n", plane_sent->plane->normal_vec->x);
+	printf("Normal vector Y: %f\n", plane_sent->plane->normal_vec->y);
+	printf("Normal vector Z: %f\n", plane_sent->plane->normal_vec->z);
+	printf("\nRotation X: %f\n", plane_sent->plane->r_x);
+	printf("Rotation Y: %f\n", plane_sent->plane->r_y);
+	printf("Rotation Z: %f\n", plane_sent->plane->r_z);
 	return (0);
 }
