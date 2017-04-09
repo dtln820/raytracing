@@ -34,3 +34,18 @@ simple_plane
 0.0     #R_Y
 0.0     #R_Z
 #END
+
+#Cylinder
+Cylinder
+fcylinder
+0.0     #s_cap X
+5.0     #s_cap Y
+0.0     #s_cap Z
+0.0     #cyl_axis X
+10.0    #cyl_axis Y
+0.0     #cyl_axis Z
+20.0    #RADIUS
+0.0     #e_cap X
+100.0   #e_cap Y
+0.0     #e_cap Z
+#END

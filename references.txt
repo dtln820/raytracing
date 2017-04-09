@@ -14,3 +14,11 @@ http://www.raytracegroundup.com/
 Ray Tracing in one weekend #BOOK
 https://www.libsdl.org/ #SDL
 http://www.parallelrealities.co.uk/2011/09/basic-game-tutorial-4-controlling.html #SDL TUTS
+
+http://hugi.scene.org/online/hugi24/coding%20graphics%20chris%20dragan%20raytracing%20shapes.htm
+https://www.doc.ic.ac.uk/~dfg/graphics/graphics2009/GraphicsLecture11.pdf
+http://orca.st.usm.edu/~jchen/courses/graphics/lectures/Raytracing.pdf
+http://woo4.me/wootracer/cylinder-intersection/
+http://mrl.nyu.edu/~dzorin/rend05/lecture1a.pdf
+http://mrl.nyu.edu/~dzorin/rend05/lecture2.pdf
+https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-plane-and-ray-disk-intersection

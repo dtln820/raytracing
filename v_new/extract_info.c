@@ -4,9 +4,11 @@ int					cam_nr;
 int					sphere_nr;
 int					light_nr;
 int					plane_nr;
+int					cyl_nr;
 t_camnode			*cam_head;
 t_sphnode			*sph_head;
 t_planenode			*plane_head;
+t_cylnode			*cyl_head;
 
 void	ft_fillstructs(char *str)
 {
@@ -45,10 +47,20 @@ void	ft_fillstructs(char *str)
 		objtofill[2] = 1;
 		if (strcmp(str, "#END") == 0)
 		{
-			objtofill[2] = 1;
+			objtofill[2] = 0;
 			return ;
 		}
 		ft_fillplane(str);
+	}
+	else if (strcmp(str, "Cylinder") == 0 || objtofill[3] == 1)
+	{
+		objtofill[3] = 1;
+		if (strcmp(str, "#END") == 0)
+		{
+			objtofill[3] = 0;
+			return ;
+		}
+		ft_fillcylinder(str);
 	}
 }
 
@@ -77,34 +89,37 @@ int		main(int argc, char *argv[])
 	cam_head = NULL;
 	ft_extract(fd, argv[1]);
 	t_camnode *cam_sent = cam_head;
-	printf("Object name: %s\n", cam_sent->cam->name);
-	printf("\nPosition X: %f\n", cam_sent->cam->p_x);
-	printf("Position X: %f\n", cam_sent->cam->p_y);
-	printf("Position X: %f\n", cam_sent->cam->p_z);
-	printf("\nRotation X: %f\n", cam_sent->cam->r_x);
-	printf("Rotation Y: %f\n", cam_sent->cam->r_y);
-	printf("Rotation Z: %f\n", cam_sent->cam->r_z);
+	printf("##Object name: [ %s ]\n", cam_sent->cam->name);
+	printf("Position: { %.2f, %.2f, %.2f }\n", cam_sent->cam->origin.x,
+	cam_sent->cam->origin.y, cam_sent->cam->origin.z);
+	printf("Rotation: { %.2f, %.2f, %.2f }\n", cam_sent->cam->rotation.x,
+	cam_sent->cam->rotation.y, cam_sent->cam->rotation.z);
 
 	t_sphnode *sph_sent = sph_head;
-	printf("\nObject name: %s\n", sph_sent->sphere->name);
-	printf("\nPosition X: %f\n", sph_sent->sphere->p_x);
-	printf("Position X: %f\n", sph_sent->sphere->p_y);
-	printf("Position X: %f\n", sph_sent->sphere->p_z);
-	printf("\nRotation X: %f\n", sph_sent->sphere->r_x);
-	printf("Rotation Y: %f\n", sph_sent->sphere->r_y);
-	printf("Rotation Z: %f\n", sph_sent->sphere->r_z);
-	printf("\nRadius: %f\n", sph_sent->sphere->radius);
+	printf("\n\n##Object name: [ %s ]\n", sph_sent->sphere->name);
+	printf("Position: { %.2f, %.2f, %.2f }\n", sph_sent->sphere->center.x,
+	sph_sent->sphere->center.y, sph_sent->sphere->center.z);
+	printf("Rotation: { %.2f, %.2f, %.2f }\n", sph_sent->sphere->rotation.x,
+	sph_sent->sphere->rotation.y, sph_sent->sphere->rotation.z);
+	printf("Radius: { %.2f }\n", sph_sent->sphere->radius);
 
 	t_planenode *plane_sent = plane_head;
-	printf("\nObject name: %s\n", plane_sent->plane->name);
-	printf("\nPosition X: %f\n", plane_sent->plane->point_x);
-	printf("Position Y: %f\n", plane_sent->plane->point_y);
-	printf("Position Z: %f\n", plane_sent->plane->point_z);
-	printf("\nNormal vector X: %f\n", plane_sent->plane->normal_vec->x);
-	printf("Normal vector Y: %f\n", plane_sent->plane->normal_vec->y);
-	printf("Normal vector Z: %f\n", plane_sent->plane->normal_vec->z);
-	printf("\nRotation X: %f\n", plane_sent->plane->r_x);
-	printf("Rotation Y: %f\n", plane_sent->plane->r_y);
-	printf("Rotation Z: %f\n", plane_sent->plane->r_z);
+	printf("\n\n##Object name: [ %s ]\n", plane_sent->plane->name);
+	printf("Position: { %.2f, %.2f, %.2f }\n", plane_sent->plane->point.x,
+	plane_sent->plane->point.y, plane_sent->plane->point.z);
+	printf("Normal vector: { %.2f, %.2f, %.2f }\n", plane_sent->plane->normal_vec.x,
+	plane_sent->plane->normal_vec.y, plane_sent->plane->normal_vec.z);
+	printf("Rotation: { %.2f, %.2f, %.2f }\n", plane_sent->plane->rotation.x,
+	plane_sent->plane->rotation.y, plane_sent->plane->rotation.z);
+
+	t_cylnode *cyl_sent = cyl_head;
+	printf("\n\n##Object name: [ %s ]\n", cyl_sent->cylinder->name);
+	printf("Start Cap: { %.2f, %.2f, %.2f }\n", cyl_sent->cylinder->start_cap.x,
+	cyl_sent->cylinder->start_cap.y, cyl_sent->cylinder->start_cap.z);
+	printf("Axis Vector: { %.2f, %.2f, %.2f }\n", cyl_sent->cylinder->cyl_axis.x,
+	cyl_sent->cylinder->cyl_axis.y, cyl_sent->cylinder->cyl_axis.z);
+	printf("Radius: { %.2f }\n", cyl_sent->cylinder->radius);
+	printf("End Cap: { %.2f, %.2f, %.2f }\n", cyl_sent->cylinder->end_cap.x,
+	cyl_sent->cylinder->end_cap.y, cyl_sent->cylinder->end_cap.z);
 	return (0);
 }

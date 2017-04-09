@@ -8,6 +8,13 @@
 # include <string.h>
 # include "get_next_line.h"
 
+typedef	struct			s_point
+{
+	double				x;
+	double				y;
+	double				z;
+}						t_point;
+
 typedef struct			s_vector
 {
 	double				x;
@@ -15,38 +22,35 @@ typedef struct			s_vector
 	double				z;
 }						t_vector;
 
+typedef struct			s_cylinder
+{
+	char				*name;
+	t_point				start_cap;
+	t_vector			cyl_axis;
+	double				radius;
+	t_point				end_cap;
+}						t_cylinder;
+
 typedef struct			s_plane
 {
 	char				*name;
-	double				point_x;
-	double				point_y;
-	double				point_z;
-	struct s_vector		*normal_vec;
-	double				r_x;
-	double				r_y;
-	double				r_z;
+	t_point				point;
+	t_vector			normal_vec;
+	t_point				rotation;
 }						t_plane;
 
 typedef struct			s_camera
 {
 	char				*name;
-	double				p_x;
-	double				p_y;
-	double				p_z;
-	double				r_x;
-	double				r_y;
-	double				r_z;
+	t_point				origin;
+	t_point				rotation;
 }						t_camera;
 
 typedef struct			s_sphere
 {
 	char				*name;
-	double				p_x;
-	double				p_y;
-	double				p_z;
-	double				r_x;
-	double				r_y;
-	double				r_z;
+	t_point				center;
+	t_point				rotation;
 	double				radius;
 }						t_sphere;
 
@@ -74,6 +78,12 @@ typedef struct			s_planenode
 	struct s_planenode	*next;
 }						t_planenode;
 
+typedef struct			s_cylnode
+{
+	struct s_cylinder	*cylinder;
+	struct s_cylnode	*next;
+}						t_cylnode;
+
 int		ft_extract(int fd, char *path);
 void	ft_fillstructs(char *str);
 void	ft_fillcamprop(int *enters, t_camera *cam, char *str);
@@ -88,5 +98,9 @@ void	ft_fillplaneprop(int *enters, t_plane *plane, char *str);
 void	ft_planecreatefirst();
 void	ft_planecreatenode();
 void	ft_fillplane(char *str);
+void	ft_fillcylinderprop(int *enters, t_cylinder *cylinder, char *str);
+void	ft_cylcreatefirst();
+void	ft_cylcreatenode();
+void	ft_fillcylinder(char *str);
 
 #endif

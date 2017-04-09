@@ -12,18 +12,18 @@ void	ft_fillcamprop(int *enters, t_camera *cam, char *str)
 		strcpy(cam->name, str);
 	}
 	else if (*enters == 3)
-		cam->p_x = strtod(str, NULL);
+		cam->origin.x = strtod(str, NULL);
 	else if (*enters == 4)
-		cam->p_y = strtod(str, NULL);
+		cam->origin.y = strtod(str, NULL);
 	else if (*enters == 5)
-		cam->p_z = strtod(str, NULL);
+		cam->origin.z = strtod(str, NULL);
 	else if (*enters == 6)
-		cam->r_x = strtod(str, NULL);
+		cam->rotation.x = strtod(str, NULL);
 	else if (*enters == 7)
-		cam->r_y = strtod(str, NULL);
+		cam->rotation.y = strtod(str, NULL);
 	else if (*enters == 8)
 	{
-		cam->r_z = strtod(str, NULL);
+		cam->rotation.z = strtod(str, NULL);
 		*enters = 0;
 	}
 }

@@ -12,17 +12,17 @@ void	ft_fillsphprop(int *enters, t_sphere *sphere, char *str)
 		strcpy(sphere->name, str);
 	}
 	else if (*enters == 3)
-		sphere->p_x = strtod(str, NULL);
+		sphere->center.x = strtod(str, NULL);
 	else if (*enters == 4)
-		sphere->p_y = strtod(str, NULL);
+		sphere->center.y = strtod(str, NULL);
 	else if (*enters == 5)
-		sphere->p_z = strtod(str, NULL);
+		sphere->center.z = strtod(str, NULL);
 	else if (*enters == 6)
-		sphere->r_x = strtod(str, NULL);
+		sphere->rotation.x = strtod(str, NULL);
 	else if (*enters == 7)
-		sphere->r_y = strtod(str, NULL);
+		sphere->rotation.y = strtod(str, NULL);
 	else if (*enters == 8)
-		sphere->r_z = strtod(str, NULL);
+		sphere->rotation.z = strtod(str, NULL);
 	else if (*enters == 9)
 	{
 		sphere->radius = strtod(str, NULL);
