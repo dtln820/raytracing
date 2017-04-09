@@ -22,3 +22,4 @@ http://woo4.me/wootracer/cylinder-intersection/
 http://mrl.nyu.edu/~dzorin/rend05/lecture1a.pdf
 http://mrl.nyu.edu/~dzorin/rend05/lecture2.pdf
 https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-plane-and-ray-disk-intersection
+http://www.povray.org/documentation/3.7.0/t2_2.html#t2_2_1
