@@ -1,12 +1,12 @@
 #Centered Camera
 Camera
 first_camera
-15.0     #P_X
+15.0    #P_X
 2.0     #P_Y
--17.0     #P_Z
-36.0     #R_X
-15.0     #R_Y
-10.0     #R_Z
+-17.0   #P_Z
+36.0    #R_X
+15.0    #R_Y
+10.0    #R_Z
 #END
 
 #Sphere to be rendered
@@ -41,11 +41,21 @@ fcylinder
 0.0     #s_cap X
 5.0     #s_cap Y
 0.0     #s_cap Z
-0.0     #cyl_axis X
-10.0    #cyl_axis Y
-0.0     #cyl_axis Z
 20.0    #RADIUS
 0.0     #e_cap X
 100.0   #e_cap Y
 0.0     #e_cap Z
+#END
+
+#Cone
+Cone
+cone_1
+100.0   #s_cap X
+0.0     #s_cap Y
+20.0    #s_cap Z
+100.0   #e_cap X
+111.0   #e_cap Y
+20.0    #e_cap Z
+50.0    #Start Cap RADIUS
+15.0    #End Cap RADIUS
 #END

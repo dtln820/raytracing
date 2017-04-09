@@ -22,13 +22,21 @@ typedef struct			s_vector
 	double				z;
 }						t_vector;
 
+typedef struct			s_cone
+{
+	char				*name;
+	t_point				start_cap;
+	t_point				end_cap;
+	double				sc_radius;
+	double				ec_radius;
+}						t_cone;
+
 typedef struct			s_cylinder
 {
 	char				*name;
 	t_point				start_cap;
-	t_vector			cyl_axis;
-	double				radius;
 	t_point				end_cap;
+	double				radius;
 }						t_cylinder;
 
 typedef struct			s_plane
@@ -84,6 +92,12 @@ typedef struct			s_cylnode
 	struct s_cylnode	*next;
 }						t_cylnode;
 
+typedef struct			s_conenode
+{
+	struct s_cone		*cone;
+	struct s_conenode	*next;
+}						t_conenode;
+
 int		ft_extract(int fd, char *path);
 void	ft_fillstructs(char *str);
 void	ft_fillcamprop(int *enters, t_camera *cam, char *str);
@@ -102,5 +116,9 @@ void	ft_fillcylinderprop(int *enters, t_cylinder *cylinder, char *str);
 void	ft_cylcreatefirst();
 void	ft_cylcreatenode();
 void	ft_fillcylinder(char *str);
+void	ft_fillconeprop(int *enters, t_cone *cone, char *str);
+void	ft_conecreatefirst();
+void	ft_conecreatenode();
+void	ft_fillcone(char *str);
 
 #endif

@@ -18,18 +18,12 @@ void	ft_fillcylinderprop(int *enters, t_cylinder *cylinder, char *str)
 	else if (*enters == 5)
 		cylinder->start_cap.z = strtod(str, NULL);
 	else if (*enters == 6)
-		cylinder->cyl_axis.x = strtod(str, NULL);
-	else if (*enters == 7)
-		cylinder->cyl_axis.y = strtod(str, NULL);
-	else if (*enters == 8)
-		cylinder->cyl_axis.z = strtod(str, NULL);
-	else if (*enters == 9)
 		cylinder->radius = strtod(str, NULL);
-	else if (*enters == 10)
+	else if (*enters == 7)
 		cylinder->end_cap.x = strtod(str, NULL);
-	else if (*enters == 11)
+	else if (*enters == 8)
 		cylinder->end_cap.y = strtod(str, NULL);
-	else if (*enters == 12)
+	else if (*enters == 9)
 	{
 		cylinder->end_cap.z = strtod(str, NULL);
 		*enters = 0;

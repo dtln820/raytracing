@@ -5,10 +5,12 @@ int					sphere_nr;
 int					light_nr;
 int					plane_nr;
 int					cyl_nr;
+int					cone_nr;
 t_camnode			*cam_head;
 t_sphnode			*sph_head;
 t_planenode			*plane_head;
 t_cylnode			*cyl_head;
+t_conenode			*cone_head;
 
 void	ft_fillstructs(char *str)
 {
@@ -61,6 +63,16 @@ void	ft_fillstructs(char *str)
 			return ;
 		}
 		ft_fillcylinder(str);
+	}
+	else if (strcmp(str, "Cone") == 0 || objtofill[4] == 1)
+	{
+		objtofill[4] = 1;
+		if (strcmp(str, "#END") == 0)
+		{
+			objtofill[4] = 0;
+			return ;
+		}
+		ft_fillcone(str);
 	}
 }
 
@@ -116,10 +128,17 @@ int		main(int argc, char *argv[])
 	printf("\n\n##Object name: [ %s ]\n", cyl_sent->cylinder->name);
 	printf("Start Cap: { %.2f, %.2f, %.2f }\n", cyl_sent->cylinder->start_cap.x,
 	cyl_sent->cylinder->start_cap.y, cyl_sent->cylinder->start_cap.z);
-	printf("Axis Vector: { %.2f, %.2f, %.2f }\n", cyl_sent->cylinder->cyl_axis.x,
-	cyl_sent->cylinder->cyl_axis.y, cyl_sent->cylinder->cyl_axis.z);
-	printf("Radius: { %.2f }\n", cyl_sent->cylinder->radius);
 	printf("End Cap: { %.2f, %.2f, %.2f }\n", cyl_sent->cylinder->end_cap.x,
 	cyl_sent->cylinder->end_cap.y, cyl_sent->cylinder->end_cap.z);
+	printf("Radius: { %.2f }\n", cyl_sent->cylinder->radius);
+
+	t_conenode *cone_sent = cone_head;
+	printf("\n\n##Object name: [ %s ]\n", cone_sent->cone->name);
+	printf("Start Cap: { %.2f, %.2f, %.2f }\n", cone_sent->cone->start_cap.x,
+	cone_sent->cone->start_cap.y, cone_sent->cone->start_cap.z);
+	printf("End Cap: { %.2f, %.2f, %.2f }\n", cone_sent->cone->end_cap.x,
+	cone_sent->cone->end_cap.y, cone_sent->cone->end_cap.z);
+	printf("Start Radius: { %.2f }\n", cone_sent->cone->sc_radius);
+	printf("End Radius: { %.2f }\n", cone_sent->cone->ec_radius);
 	return (0);
 }
