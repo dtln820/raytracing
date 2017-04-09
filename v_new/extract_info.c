@@ -11,6 +11,7 @@ t_sphnode			*sph_head;
 t_planenode			*plane_head;
 t_cylnode			*cyl_head;
 t_conenode			*cone_head;
+t_lightnode			*light_head;
 
 void	ft_fillstructs(char *str)
 {
@@ -73,6 +74,16 @@ void	ft_fillstructs(char *str)
 			return ;
 		}
 		ft_fillcone(str);
+	}
+	else if (strcmp(str, "Light") == 0 || objtofill[5] == 1)
+	{
+		objtofill[5] = 1;
+		if (strcmp(str, "#END") == 0)
+		{
+			objtofill[5] = 0;
+			return ;
+		}
+		ft_filllight(str);
 	}
 }
 
@@ -140,5 +151,13 @@ int		main(int argc, char *argv[])
 	cone_sent->cone->end_cap.y, cone_sent->cone->end_cap.z);
 	printf("Start Radius: { %.2f }\n", cone_sent->cone->sc_radius);
 	printf("End Radius: { %.2f }\n", cone_sent->cone->ec_radius);
+
+	t_lightnode *light_sent = light_head;
+	printf("\n\n##Object name: [ %s ]\n", light_sent->light->name);
+	printf("Position: { %.2f, %.2f, %.2f }\n", light_sent->light->center.x,
+	light_sent->light->center.y, light_sent->light->center.z);
+	printf("Rotation: { %.2f, %.2f, %.2f }\n", light_sent->light->rotation.x,
+	light_sent->light->rotation.y, light_sent->light->rotation.z);
+	printf("Radius: { %.2f }\n", light_sent->light->radius);
 	return (0);
 }

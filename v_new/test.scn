@@ -59,3 +59,15 @@ cone_1
 50.0    #Start Cap RADIUS
 15.0    #End Cap RADIUS
 #END
+
+#Light
+Light
+world_light
+250.0   #P_X
+100.0   #P_Y
+50.0    #P_Z
+0.0     #R_X
+0.0     #R_Y
+0.0     #R_Z
+1.0     #RADIUS
+#END

@@ -22,6 +22,14 @@ typedef struct			s_vector
 	double				z;
 }						t_vector;
 
+typedef struct			s_light
+{
+	char				*name;
+	t_point				center;
+	t_point				rotation;
+	double				radius;
+}						t_light;
+
 typedef struct			s_cone
 {
 	char				*name;
@@ -47,13 +55,6 @@ typedef struct			s_plane
 	t_point				rotation;
 }						t_plane;
 
-typedef struct			s_camera
-{
-	char				*name;
-	t_point				origin;
-	t_point				rotation;
-}						t_camera;
-
 typedef struct			s_sphere
 {
 	char				*name;
@@ -61,6 +62,13 @@ typedef struct			s_sphere
 	t_point				rotation;
 	double				radius;
 }						t_sphere;
+
+typedef struct			s_camera
+{
+	char				*name;
+	t_point				origin;
+	t_point				rotation;
+}						t_camera;
 
 typedef struct			s_camnode
 {
@@ -73,12 +81,6 @@ typedef struct			s_sphnode
 	struct s_sphere		*sphere;
 	struct s_sphnode	*next;
 }						t_sphnode;
-
-typedef struct			s_lightnode
-{
-	struct s_sphere		*light;
-	struct s_lightnode	*next;
-}						t_lightnode;
 
 typedef struct			s_planenode
 {
@@ -97,6 +99,12 @@ typedef struct			s_conenode
 	struct s_cone		*cone;
 	struct s_conenode	*next;
 }						t_conenode;
+
+typedef struct			s_lightnode
+{
+	struct s_light		*light;
+	struct s_lightnode	*next;
+}						t_lightnode;
 
 int		ft_extract(int fd, char *path);
 void	ft_fillstructs(char *str);
@@ -120,5 +128,9 @@ void	ft_fillconeprop(int *enters, t_cone *cone, char *str);
 void	ft_conecreatefirst();
 void	ft_conecreatenode();
 void	ft_fillcone(char *str);
+void	ft_filllightprop(int *enters, t_light *light, char *str);
+void	ft_lightcreatefirst();
+void	ft_lightcreatenode();
+void	ft_filllight(char *str);
 
 #endif
