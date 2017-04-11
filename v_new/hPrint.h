@@ -1,7 +1,7 @@
 #ifndef FT_PRINT_H
 # define FT_PRINT_H
 
-# include "extract_info.h"
+# include "hExtract_info.h"
 
 void	ft_print_cameras();
 void	ft_print_spheres();

@@ -1,5 +1,5 @@
-#include "extract_info.h"
-#include "ft_print.h"
+#include "hExtract_info.h"
+#include "hPrint.h"
 
 void	ft_fillstructs(char *str)
 {
@@ -87,7 +87,7 @@ int		ft_extract(int fd, char *path)
 	return (0);
 }
 
-int		main(int argc, char *argv[])
+int		ft_checkextract(int argc, char *argv[])
 {
 	int		fd;
 
@@ -98,6 +98,5 @@ int		main(int argc, char *argv[])
 	}
 	fd = open(argv[1], O_RDONLY);
 	ft_extract(fd, argv[1]);
-	ft_print_structs();
 	return (0);
 }

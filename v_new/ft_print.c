@@ -1,4 +1,4 @@
-#include "extract_info.h"
+#include "hPrint.h"
 
 void	ft_print_cameras()
 {

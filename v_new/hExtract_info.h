@@ -150,5 +150,6 @@ void	ft_filllightprop(int *enters, t_light *light, char *str);
 void	ft_lightcreatefirst();
 void	ft_lightcreatenode();
 void	ft_filllight(char *str);
+int		ft_checkextract(int argc, char *argv[]);
 
 #endif
