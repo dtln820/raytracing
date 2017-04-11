@@ -28,8 +28,10 @@ void	ft_fillplaneprop(int *enters, t_plane *plane, char *str)
 	else if (*enters == 10)
 		plane->rotation.y = strtod(str, NULL);
 	else if (*enters == 11)
-	{
 		plane->rotation.z = strtod(str, NULL);
+	else if (*enters == 12)
+	{
+		plane->color = strtol(str, NULL, 16);
 		*enters = 0;
 	}
 }

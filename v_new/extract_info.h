@@ -28,6 +28,7 @@ typedef struct			s_light
 	t_point				center;
 	t_point				rotation;
 	double				radius;
+	int					color;
 }						t_light;
 
 typedef struct			s_cone
@@ -37,6 +38,7 @@ typedef struct			s_cone
 	t_point				end_cap;
 	double				sc_radius;
 	double				ec_radius;
+	int					color;
 }						t_cone;
 
 typedef struct			s_cylinder
@@ -45,6 +47,7 @@ typedef struct			s_cylinder
 	t_point				start_cap;
 	t_point				end_cap;
 	double				radius;
+	int					color;
 }						t_cylinder;
 
 typedef struct			s_plane
@@ -53,6 +56,7 @@ typedef struct			s_plane
 	t_point				point;
 	t_vector			normal_vec;
 	t_point				rotation;
+	int					color;
 }						t_plane;
 
 typedef struct			s_sphere
@@ -61,6 +65,7 @@ typedef struct			s_sphere
 	t_point				center;
 	t_point				rotation;
 	double				radius;
+	int					color;
 }						t_sphere;
 
 typedef struct			s_camera

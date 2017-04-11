@@ -24,8 +24,10 @@ void	ft_fillcylinderprop(int *enters, t_cylinder *cylinder, char *str)
 	else if (*enters == 8)
 		cylinder->end_cap.y = strtod(str, NULL);
 	else if (*enters == 9)
-	{
 		cylinder->end_cap.z = strtod(str, NULL);
+	else if (*enters == 10)
+	{
+		cylinder->color = strtol(str, NULL, 16);
 		*enters = 0;
 	}
 }

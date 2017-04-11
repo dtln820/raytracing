@@ -26,8 +26,10 @@ void	ft_fillconeprop(int *enters, t_cone *cone, char *str)
 	else if (*enters == 9)
 		cone->sc_radius = strtod(str, NULL);
 	else if (*enters == 10)
-	{
 		cone->ec_radius = strtod(str, NULL);
+	else if (*enters == 11)
+	{
+		cone->color = strtol(str, NULL, 16);
 		*enters = 0;
 	}
 }

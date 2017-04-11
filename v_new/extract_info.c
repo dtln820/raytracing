@@ -125,6 +125,7 @@ int		main(int argc, char *argv[])
 	printf("Rotation: { %.2f, %.2f, %.2f }\n", sph_sent->sphere->rotation.x,
 	sph_sent->sphere->rotation.y, sph_sent->sphere->rotation.z);
 	printf("Radius: { %.2f }\n", sph_sent->sphere->radius);
+	printf("Color: #%X\n", sph_sent->sphere->color);
 
 	t_planenode *plane_sent = plane_head;
 	printf("\n\n##Object name: [ %s ]\n", plane_sent->plane->name);
@@ -134,6 +135,7 @@ int		main(int argc, char *argv[])
 	plane_sent->plane->normal_vec.y, plane_sent->plane->normal_vec.z);
 	printf("Rotation: { %.2f, %.2f, %.2f }\n", plane_sent->plane->rotation.x,
 	plane_sent->plane->rotation.y, plane_sent->plane->rotation.z);
+	printf("Color: #%X\n", plane_sent->plane->color);
 
 	t_cylnode *cyl_sent = cyl_head;
 	printf("\n\n##Object name: [ %s ]\n", cyl_sent->cylinder->name);
@@ -142,6 +144,7 @@ int		main(int argc, char *argv[])
 	printf("End Cap: { %.2f, %.2f, %.2f }\n", cyl_sent->cylinder->end_cap.x,
 	cyl_sent->cylinder->end_cap.y, cyl_sent->cylinder->end_cap.z);
 	printf("Radius: { %.2f }\n", cyl_sent->cylinder->radius);
+	printf("Color: #%X\n", cyl_sent->cylinder->color);
 
 	t_conenode *cone_sent = cone_head;
 	printf("\n\n##Object name: [ %s ]\n", cone_sent->cone->name);
@@ -151,6 +154,7 @@ int		main(int argc, char *argv[])
 	cone_sent->cone->end_cap.y, cone_sent->cone->end_cap.z);
 	printf("Start Radius: { %.2f }\n", cone_sent->cone->sc_radius);
 	printf("End Radius: { %.2f }\n", cone_sent->cone->ec_radius);
+	printf("Color: #%X\n", cone_sent->cone->color);
 
 	t_lightnode *light_sent = light_head;
 	printf("\n\n##Object name: [ %s ]\n", light_sent->light->name);
@@ -159,5 +163,6 @@ int		main(int argc, char *argv[])
 	printf("Rotation: { %.2f, %.2f, %.2f }\n", light_sent->light->rotation.x,
 	light_sent->light->rotation.y, light_sent->light->rotation.z);
 	printf("Radius: { %.2f }\n", light_sent->light->radius);
+	printf("Color: #%X\n", light_sent->light->color);
 	return (0);
 }

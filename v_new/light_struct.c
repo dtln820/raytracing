@@ -24,8 +24,10 @@ void	ft_filllightprop(int *enters, t_light *light, char *str)
 	else if (*enters == 8)
 		light->rotation.z = strtod(str, NULL);
 	else if (*enters == 9)
-	{
 		light->radius = strtod(str, NULL);
+	else if (*enters == 10)
+	{
+		light->color = strtol(str, NULL, 16);
 		*enters = 0;
 	}
 }

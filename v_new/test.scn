@@ -19,6 +19,7 @@ sphere
 0.0     #R_Y
 0.0     #R_Z
 50.0    #RADIUS
+0xFFFFFF    #Color
 #END
 
 #Plane
@@ -33,6 +34,7 @@ simple_plane
 0.0     #R_X
 0.0     #R_Y
 0.0     #R_Z
+0xFF0000    #Color
 #END
 
 #Cylinder
@@ -45,6 +47,7 @@ fcylinder
 0.0     #e_cap X
 100.0   #e_cap Y
 0.0     #e_cap Z
+0xFF00FF    #Color
 #END
 
 #Cone
@@ -58,6 +61,7 @@ cone_1
 20.0    #e_cap Z
 50.0    #Start Cap RADIUS
 15.0    #End Cap RADIUS
+0xFF000F    #Color
 #END
 
 #Light
@@ -70,4 +74,5 @@ world_light
 0.0     #R_Y
 0.0     #R_Z
 1.0     #RADIUS
+0xFFFFFF    #Color
 #END

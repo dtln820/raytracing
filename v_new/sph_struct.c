@@ -24,8 +24,10 @@ void	ft_fillsphprop(int *enters, t_sphere *sphere, char *str)
 	else if (*enters == 8)
 		sphere->rotation.z = strtod(str, NULL);
 	else if (*enters == 9)
-	{
 		sphere->radius = strtod(str, NULL);
+	else if (*enters == 10)
+	{
+		sphere->color = strtol(str, NULL, 16);
 		*enters = 0;
 	}
 }
