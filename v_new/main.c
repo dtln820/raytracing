@@ -1,5 +1,6 @@
 #include "hExtract_info.h"
 #include "hPrint.h"
+#include "hRaytracing.h"
 
 int		main(int argc, char *argv[])
 {
