@@ -71,10 +71,18 @@ void	ft_render(t_wnd *ws)
 				free(N);
 				free(temp1);
 				free(temp2);
-				int tv1 = (int)(0x0000FF * fabs(dt) + 0xFFFFFF) << 16;
-				int tv2 = (int)(0x0000FF * fabs(dt) + 0xFFFFFF) << 8;
-				int tv3 = (int)(0x0000FF * fabs(dt) + 0xFFFFFF);
-				mlx_pixel_put(ws->mlx, ws->win, x, y, tv1 | tv2 | tv3);
+				// int tv1 = (int)(0x0000FF * fabs(dt) + 0xFF0000) << 16;
+				// int tv2 = (int)(0x0000FF * fabs(dt) + 0xFF0000) << 8;
+				// int tv3 = (int)(0x0000FF * fabs(dt) + 0xFF0000);
+				// mlx_pixel_put(ws->mlx, ws->win, x, y, tv1 | tv2 | tv3);
+				double ambient_color = 0.2;
+				double diffuse_coefficient = 0.8;
+				int obj_color = 0x0000FF;
+				printf("%d\n", obj_color);
+				if (dt < 0)
+					dt = 0;
+				double point_color = obj_color * (ambient_color + diffuse_coefficient * dt);
+				mlx_pixel_put(ws->mlx, ws->win, x, y, point_color);
 			}
 			x++;
 		}
