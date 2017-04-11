@@ -1,7 +1,5 @@
 #include "extract_info.h"
 
-int					cam_nr;
-t_camnode			*cam_head;
 static t_camnode	*cam_sent;
 
 void	ft_fillcamprop(int *enters, t_camera *cam, char *str)

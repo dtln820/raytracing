@@ -1,7 +1,5 @@
 #include "extract_info.h"
 
-int                 cone_nr;
-t_conenode			*cone_head;
 static t_conenode	*cone_sent;
 
 void	ft_fillconeprop(int *enters, t_cone *cone, char *str)

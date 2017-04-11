@@ -76,3 +76,16 @@ world_light
 1.0     #RADIUS
 0xFFFFFF    #Color
 #END
+
+#Light
+Light
+point_light
+-50.0   #P_X
+30.0    #P_Y
+-10.0   #P_Z
+20.0    #R_X
+0.0     #R_Y
+1.0     #R_Z
+1.0     #RADIUS
+0x0000FF    #Color
+#END

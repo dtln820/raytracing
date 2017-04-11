@@ -1,7 +1,5 @@
 #include "extract_info.h"
 
-int					sphere_nr;
-t_sphnode			*sph_head;
 static t_sphnode	*sph_sent;
 
 void	ft_fillsphprop(int *enters, t_sphere *sphere, char *str)

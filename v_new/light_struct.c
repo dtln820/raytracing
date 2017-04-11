@@ -1,7 +1,5 @@
 #include "extract_info.h"
 
-int                 light_nr;
-t_lightnode			*light_head;
 static t_lightnode	*light_sent;
 
 void	ft_filllightprop(int *enters, t_light *light, char *str)

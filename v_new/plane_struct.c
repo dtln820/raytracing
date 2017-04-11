@@ -1,7 +1,5 @@
 #include "extract_info.h"
 
-int					plane_nr;
-t_planenode			*plane_head;
 static t_planenode	*plane_sent;
 
 void	ft_fillplaneprop(int *enters, t_plane *plane, char *str)

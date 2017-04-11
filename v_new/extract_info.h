@@ -111,6 +111,19 @@ typedef struct			s_lightnode
 	struct s_lightnode	*next;
 }						t_lightnode;
 
+int						cam_nr;
+int						sphere_nr;
+int						light_nr;
+int						plane_nr;
+int						cyl_nr;
+int						cone_nr;
+t_camnode				*cam_head;
+t_sphnode				*sph_head;
+t_planenode				*plane_head;
+t_cylnode				*cyl_head;
+t_conenode				*cone_head;
+t_lightnode				*light_head;
+
 int		ft_extract(int fd, char *path);
 void	ft_fillstructs(char *str);
 void	ft_fillcamprop(int *enters, t_camera *cam, char *str);

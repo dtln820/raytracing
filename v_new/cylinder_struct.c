@@ -1,7 +1,5 @@
 #include "extract_info.h"
 
-int                 cyl_nr;
-t_cylnode			*cyl_head;
 static t_cylnode	*cyl_sent;
 
 void	ft_fillcylinderprop(int *enters, t_cylinder *cylinder, char *str)
