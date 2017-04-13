@@ -25,7 +25,6 @@ typedef struct			s_vector
 typedef struct			s_light
 {
 	char				*name;
-	char				*type;
 	t_point				center;
 	t_point				rotation;
 	double				radius;
@@ -35,7 +34,6 @@ typedef struct			s_light
 typedef struct			s_cone
 {
 	char				*name;
-	char				*type;
 	t_point				start_cap;
 	t_point				end_cap;
 	double				sc_radius;
@@ -46,7 +44,6 @@ typedef struct			s_cone
 typedef struct			s_cylinder
 {
 	char				*name;
-	char				*type;
 	t_point				start_cap;
 	t_point				end_cap;
 	double				radius;
@@ -56,7 +53,6 @@ typedef struct			s_cylinder
 typedef struct			s_plane
 {
 	char				*name;
-	char				*type;
 	t_point				point;
 	t_vector			normal_vec;
 	t_point				rotation;
@@ -66,7 +62,6 @@ typedef struct			s_plane
 typedef struct			s_sphere
 {
 	char				*name;
-	char				*type;
 	t_point				center;
 	t_point				rotation;
 	double				radius;
@@ -115,12 +110,6 @@ typedef struct			s_lightnode
 	struct s_light		*light;
 	struct s_lightnode	*next;
 }						t_lightnode;
-
-typedef struct			s_object
-{
-	void				*obj;
-	struct s_object		*next;
-}
 
 int						cam_nr;
 int						sphere_nr;
