@@ -8,25 +8,18 @@
 # include <string.h>
 # include "get_next_line.h"
 
-typedef	struct			s_point
+typedef struct			s_vec3
 {
 	double				x;
 	double				y;
 	double				z;
-}						t_point;
-
-typedef struct			s_vector
-{
-	double				x;
-	double				y;
-	double				z;
-}						t_vector;
+}						t_vec3;
 
 typedef struct			s_light
 {
 	char				*name;
-	t_point				center;
-	t_point				rotation;
+	t_vec3				center;
+	t_vec3				rotation;
 	double				radius;
 	int					color;
 }						t_light;
@@ -34,8 +27,8 @@ typedef struct			s_light
 typedef struct			s_cone
 {
 	char				*name;
-	t_point				start_cap;
-	t_point				end_cap;
+	t_vec3				start_cap;
+	t_vec3				end_cap;
 	double				sc_radius;
 	double				ec_radius;
 	int					color;
@@ -44,8 +37,8 @@ typedef struct			s_cone
 typedef struct			s_cylinder
 {
 	char				*name;
-	t_point				start_cap;
-	t_point				end_cap;
+	t_vec3				start_cap;
+	t_vec3				end_cap;
 	double				radius;
 	int					color;
 }						t_cylinder;
@@ -53,17 +46,17 @@ typedef struct			s_cylinder
 typedef struct			s_plane
 {
 	char				*name;
-	t_point				point;
-	t_vector			normal_vec;
-	t_point				rotation;
+	t_vec3				point;
+	t_vec3				normal_vec;
+	t_vec3				rotation;
 	int					color;
 }						t_plane;
 
 typedef struct			s_sphere
 {
 	char				*name;
-	t_point				center;
-	t_point				rotation;
+	t_vec3				center;
+	t_vec3				rotation;
 	double				radius;
 	int					color;
 }						t_sphere;
@@ -71,8 +64,8 @@ typedef struct			s_sphere
 typedef struct			s_camera
 {
 	char				*name;
-	t_point				origin;
-	t_point				rotation;
+	t_vec3				origin;
+	t_vec3				rotation;
 }						t_camera;
 
 typedef struct			s_camnode
