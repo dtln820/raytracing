@@ -1,8 +1,7 @@
 #include "hExtract_info.h"
-#include "hPrint.h"
-#include <float.h>
+#include "hRaytracing.h"
 
-const double INFINITY = DBL_MAX;
+const double INFI = DBL_MAX;
 
 int		ft_sumobjects()
 {
@@ -13,7 +12,7 @@ int		ft_sumobjects()
 	return (result);
 }
 
-_Bool	ft_trace()
+_Bool	ft_trace(t_vec3 *orig, t_vec3 *dir, double tNear, uint32_t index, t_vec2 *uv)
 {
 	int			obj_nr;
 	int			i;
@@ -23,65 +22,56 @@ _Bool	ft_trace()
 	t_cylnode	*cyl_sent;
 	t_conenode	*cone_sent;
 
-	obj_nr = ft_sumobjects();
-	i = 0;
 	sph_sent = sph_head;
 	plane_sent = plane_head;
 	cyl_sent = cyl_head;
 	cone_sent = cone_head;
-	while (i < obj_nr)
+	double tNearK = INFI;
+	uint32_t indexK;
+	t_vec2 *uvK;
+	while (sph_sent != NULL)
 	{
-		double tNearK = INFINITY;
-		uint32_t indexK;
-		Vec2f uvK;
-		while (sph_sent != NULL)
-		{
-			if (ft_sphintersect(orig, dir, tNearK, indexK, uvK, sph_sent))
-				if (tNearK < tNear)
-				{
-					tNear = tNearK;
-					index = indexK;
-					uv = uvK;
-					// do some shit
-				}
-			sph_sent = sph_sent->next;
-		}
-		while (plane_sent != NULL)
-		{
-			if (ft_planeintersect(orig, dir, tNearK, indexK, uvK, plane_sent))
-				if (tNearK < tNear)
-				{
-					tNear = tNearK;
-					index = indexK;
-					uv = uvK;
-					// do some shit
-				}
-			plane_sent = plane_sent->next;
-		}
-		while (cyl_sent != NULL)
-		{
-			if (ft_cylintersect(orig, dir, tNearK, indexK, uvK, cyl_sent))
-				if (tNearK < tNear)
-				{
-					tNear = tNearK;
-					index = indexK;
-					uv = uvK;
-					// do some shit
-				}
-			cyl_sent = cyl_sent->next;
-		}
-		while (cone_sent != NULL)
-		{
-			if (ft_coneintersect(orig, dir, tNearK, indexK, uvK, cone_sent))
-				if (tNearK < tNear)
-				{
-					tNear = tNearK;
-					index = indexK;
-					uv = uvK;
-					// do some shit
-				}
-			cone_sent = cone_sent->next;
-		}
+		if (ft_sphintersect(orig, dir, tNearK, indexK, uvK, sph_sent))
+			if (tNearK < tNear)
+			{
+				tNear = tNearK;
+				index = indexK;
+				ft_vec2set(uvK->x, uvK->y, uv);
+			}
+		sph_sent = sph_sent->next;
+	}
+	while (plane_sent != NULL)
+	{
+		if (ft_planeintersect(orig, dir, tNearK, indexK, uvK, plane_sent))
+			if (tNearK < tNear)
+			{
+				tNear = tNearK;
+				index = indexK;
+				ft_vec2set(uvK->x, uvK->y, uv);
+			}
+		plane_sent = plane_sent->next;
+	}
+	while (cyl_sent != NULL)
+	{
+		if (ft_cylintersect(orig, dir, tNearK, indexK, uvK, cyl_sent))
+			if (tNearK < tNear)
+			{
+				tNear = tNearK;
+				index = indexK;
+				ft_vec2set(uvK->x, uvK->y, uv);
+			}
+		cyl_sent = cyl_sent->next;
+	}
+	while (cone_sent != NULL)
+	{
+		if (ft_coneintersect(orig, dir, tNearK, indexK, uvK, cone_sent))
+			if (tNearK < tNear)
+			{
+				tNear = tNearK;
+				index = indexK;
+				ft_vec2set(uvK->x, uvK->y, uv);
+			}
+		cone_sent = cone_sent->next;
 	}
 }
 

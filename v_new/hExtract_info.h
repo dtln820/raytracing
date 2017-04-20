@@ -8,6 +8,12 @@
 # include <string.h>
 # include "get_next_line.h"
 
+typedef struct			s_vec2
+{
+	double				x;
+	double				y;
+}						t_vec2;
+
 typedef struct			s_vec3
 {
 	double				x;

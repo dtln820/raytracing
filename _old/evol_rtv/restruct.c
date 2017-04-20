@@ -42,11 +42,11 @@ t_vec	*ft_trace(t_vec *rayor, t_vec *raydr, t_sphere *sphere, int depth)
 	nhit = ft_vecdiff(phit, tmp_sph->center);
 	ft_vecnorm(nhit);
 	bias = 1e-4;
-	inside = false;
+	inside = 0;
 	if (ft_vecdot(raydr, nhit) > 0)
 	{
 		nhit = -nhit;
-		inside = true;
+		inside = 1;
 	}
 	if ((tmp_sph->transp > 0 || sphere->reflect > 0) && depth < RAYDEPTH)
 	{
