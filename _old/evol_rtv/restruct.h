@@ -20,7 +20,7 @@ typedef struct	s_sphere
 {
 	t_vec		*center;
 	double		radius;
-	t_vec		*mcolor; // material color (de suprafata)
+	t_vec		*mcolor; // material color (de suprafata) surface
 	double		reflect;
 	double		transp;
 	t_vec		*lcolor; // light color (de emitere)
@@ -42,5 +42,5 @@ t_vec			*ft_vecopus(t_vec *a);
 t_sphere		*ft_sphinit(t_vec *a, double r, t_vec *b, double re, double tr);
 t_sphere		*ft_lightinit(t_vec *a, double r, t_vec *c);
 int				ft_sphintersect(t_vec *rayor, t_vec *raydr, double *t0, double *t1, t_sphere *sphere);
-
+double			ft_mix(double a, double b, double c);
 #endif
