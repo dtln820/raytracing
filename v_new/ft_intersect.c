@@ -25,15 +25,32 @@ int	ft_sphintersect(t_vec3 *o, t_vec3 *d, double *tNK, uint32_t iK, t_vec2 *uv, 
 
 int	ft_planeintersect(t_vec3 *o, t_vec3 *d, double *tNK, uint32_t iK, t_vec2 *uv, t_planenode *plane_sent)
 {
+	double	denom;
+	t_vec3	*p0l0;
+	double	t;
+
+	denom = ft_dotproduct(plane_sent->normal_vec, d);
+	if (denom > 1e-6)
+	{
+		p0l0 = ft_v3diff(plane_sent->point, o);
+		t = ft_dotproduct(p0l0, plane_sent->normal_vec) / denom;
+		if (t >= 0)
+		{
+			*tNK = t;
+			return (1);
+		}
+	}
 	return (0);
 }
 
 int	ft_cylintersect(t_vec3 *o, t_vec3 *d, double *tNK, uint32_t iK, t_vec2 *uv, t_cylnode *cyl_sent)
 {
+	// do the infinite for now
 	return (0);
 }
 
 int	ft_coneintersect(t_vec3 *o, t_vec3 *d, double *tNK, uint32_t iK, t_vec2 *uv, t_conenode *cone_sent)
 {
+	// do the infinite for now
 	return (0);
 }
