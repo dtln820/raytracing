@@ -1,4 +1,5 @@
 #include "hIntersect.h"
+#include "hOther.h"
 
 int	ft_sphintersect(t_vec3 *o, t_vec3 *d, double *tNK, uint32_t iK, t_vec2 *uv, t_sphnode *sph_sent)
 {
@@ -46,11 +47,43 @@ int	ft_planeintersect(t_vec3 *o, t_vec3 *d, double *tNK, uint32_t iK, t_vec2 *uv
 int	ft_cylintersect(t_vec3 *o, t_vec3 *d, double *tNK, uint32_t iK, t_vec2 *uv, t_cylnode *cyl_sent)
 {
 	// do the infinite for now
-	return (0);
+	double	a;
+	double	b;
+	double	c;
+	double	t0;
+	double	t1;
+
+	a = d->x * d->x + d->z * d->z;
+	b = 2 * o->x * o->x + 2 * o->z * o->z;
+	c = o->x * o->x + o->z * o->z - (cyl_sent->radius * cyl_sent->radius);
+	if (ft_eqsolve(a, b, c, &t0, &t1) == 0)
+		return (0);
+	if (t0 < 0)
+		t0 = t1;
+	if (t0 < 0)
+		return (0);
+	*tNK = t0;
+	return (1);
 }
 
 int	ft_coneintersect(t_vec3 *o, t_vec3 *d, double *tNK, uint32_t iK, t_vec2 *uv, t_conenode *cone_sent)
 {
 	// do the infinite for now
-	return (0);
+	double	a;
+	double	b;
+	double	c;
+	double	t0;
+	double	t1;
+
+	a = d->x * d->x + d->z * d->z - d->y * d->y;
+	b = 2 * o->x * d->x + 2 * o->z * d->z - 2 * o->y * d->y;
+	c = o->x * o->x + o->z * o->z - o->y * o->y;
+	if (ft_eqsolve(a, b, c, &t0, &t1) == 0)
+		return (0);
+	if (t0 < 0)
+		t0 = t1;
+	if (t0 < 0)
+		return (0);
+	*tNK = t0;
+	return (1);
 }

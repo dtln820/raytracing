@@ -1,6 +1,8 @@
 #include "hExtract_info.h"
 #include "hRaytracing.h"
 
+#define DEPTH 5
+
 const double INFI = DBL_MAX;
 
 int		ft_sumobjects()
@@ -12,8 +14,9 @@ int		ft_sumobjects()
 	return (result);
 }
 
-_Bool	ft_trace(t_vec3 *orig, t_vec3 *dir, double tNear, uint32_t index, t_vec2 *uv)
+_Bool	ft_trace(t_vec3 *orig, t_vec3 *dir, double tNear, uint32_t index, t_vec2 *uv, void **hitObject)
 {
+	char		intersected;
 	int			obj_nr;
 	int			i;
 	int			cur_obj;
@@ -22,6 +25,7 @@ _Bool	ft_trace(t_vec3 *orig, t_vec3 *dir, double tNear, uint32_t index, t_vec2 *
 	t_cylnode	*cyl_sent;
 	t_conenode	*cone_sent;
 
+	intersected = 0;
 	sph_sent = sph_head;
 	plane_sent = plane_head;
 	cyl_sent = cyl_head;
@@ -37,6 +41,8 @@ _Bool	ft_trace(t_vec3 *orig, t_vec3 *dir, double tNear, uint32_t index, t_vec2 *
 				tNear = tNearK;
 				index = indexK;
 				ft_vec2set(uvK->x, uvK->y, uv);
+				intersected = 1;
+				*hitObject = sph_sent;
 			}
 		sph_sent = sph_sent->next;
 	}
@@ -48,6 +54,8 @@ _Bool	ft_trace(t_vec3 *orig, t_vec3 *dir, double tNear, uint32_t index, t_vec2 *
 				tNear = tNearK;
 				index = indexK;
 				ft_vec2set(uvK->x, uvK->y, uv);
+				intersected = 1;
+				*hitObject = plane_sent;
 			}
 		plane_sent = plane_sent->next;
 	}
@@ -59,6 +67,8 @@ _Bool	ft_trace(t_vec3 *orig, t_vec3 *dir, double tNear, uint32_t index, t_vec2 *
 				tNear = tNearK;
 				index = indexK;
 				ft_vec2set(uvK->x, uvK->y, uv);
+				intersected = 1;
+				*hitObject = cyl_sent;
 			}
 		cyl_sent = cyl_sent->next;
 	}
@@ -70,13 +80,25 @@ _Bool	ft_trace(t_vec3 *orig, t_vec3 *dir, double tNear, uint32_t index, t_vec2 *
 				tNear = tNearK;
 				index = indexK;
 				ft_vec2set(uvK->x, uvK->y, uv);
+				intersected = 1;
+				*hitObject = cone_sent;
 			}
 		cone_sent = cone_sent->next;
 	}
+	if (intersected == 0)
+		return (0);
+	return (1);
 }
 
-int		ft_castray()
+int		ft_castray(t_vec3 *o, t_vec3 *d, int current_depth)
 {
+	if (current_depth > DEPTH)
+		return (0x000000);
+	int			hitColor;
+	double		tnear = INFI;
+	t_vec2		*uv;
+	uint32_t	index = 0;
+	void		*hitObject;
 	if (ft_trace())
 	{
 		/*

@@ -9,7 +9,7 @@
 
 void    ft_render();
 int     ft_sumobjects();
-void    ft_trace();
+_Bool   ft_trace(t_vec3 *o, t_vec3 *d, double a, uint32_t b, t_vec2 *z, void **h);
 int		ft_castray();
 
 #endif
